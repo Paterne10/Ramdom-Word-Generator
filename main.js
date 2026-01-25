@@ -29,6 +29,8 @@ data = [
 ];
 console.log(data)
 
+let languageId = []
+
 let frenchButton = document.getElementById("French")
 let spanish = document.getElementById("spanish")
 let englishButton = document.getElementById("English")
@@ -37,6 +39,7 @@ let languageOptions = document.querySelector(".language-options")
 
 let wordGenerate = document.querySelector(".word-generate")
 let meaning = document.querySelector(".meaning")
+let favorite = document.querySelector(".favorite")
 
 
 
@@ -47,7 +50,7 @@ let generateLanguageItem = () => {
             let {id, language} = x
             return `
             <button onClick="expressionGenerate(${id})" id=${id}>
-                <a href="">${language}</a>
+                ${language}
             </button>
             `
         }).join("")
@@ -56,13 +59,17 @@ let generateLanguageItem = () => {
 
 generateLanguageItem()
 
+let checkElement = (id) => {
+    let search = languageId.find((x)=> x.id === id )
+    console.log(search)
+
+}
+
 let expressionGenerate = (id) =>{
     let selecItem = id
-    console.log(selecItem)
-    console.log(selecItem.id)
+
     let words = []
     let search = data.find((x) => x.id === selecItem.id)
-    console.log(search)
 
     for(i = 0; i < search.words.length; i++ ){
         words.push(search.words[i])
@@ -73,11 +80,16 @@ let expressionGenerate = (id) =>{
     for(key in word){
         if(word.hasOwnProperty(key)){
             value = word[key]
-            console.log(key + ":" + value)
         }
     };
 
+    let containerWordGenerate = document.getElementById("container-word-generate")  
+    containerWordGenerate.classList.add("test")
     wordGenerate.textContent = key
     meaning.textContent = value
+    favorite.innerHTML = `
+        <button class="favorite-word">Register the word</button>
+    `
+
 
 }
