@@ -76,6 +76,7 @@ let expressionGenerate = (id) =>{
     };
 
     let word = search.words[Math.floor(Math.random()*search.words.length)]
+   
 
     for(key in word){
         if(word.hasOwnProperty(key)){
@@ -93,3 +94,11 @@ let expressionGenerate = (id) =>{
 
 
 }
+
+let favoriteWords = []
+
+let addFavoriteWord = (word) => {
+    return favoriteWords.push(word)
+
+}
+
