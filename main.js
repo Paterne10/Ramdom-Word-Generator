@@ -27,7 +27,6 @@ let data = [
        ]
     }
 ];
-// console.log(data)
 
 let languageId = []
 
@@ -40,7 +39,11 @@ let languageOptions = document.querySelector(".language-options")
 let wordGenerate = document.querySelector(".word-generate")
 let meaning = document.querySelector(".meaning")
 let favorite = document.querySelector(".favorite")
-let favoriteWords = []
+let favoriteWords =  [        { "Candeur": "innocence" },
+        { "Compartimenter": "Répartir en part égale." },
+        { "Accalmie": "Période de calme." }]
+
+console.log(favoriteWords)
 
 
 
@@ -78,7 +81,6 @@ let expressionGenerate = (id) =>{
 
     let word = search.words[Math.floor(Math.random()*search.words.length)]
     let expression = JSON.stringify(word)
-    console.log(expression)
    
 
     for(key in word){
@@ -87,29 +89,28 @@ let expressionGenerate = (id) =>{
         }
     };
 
-
-  
-
-
     let containerWordGenerate = document.getElementById("container-word-generate")  
     containerWordGenerate.classList.add("test")
     wordGenerate.textContent = key
     meaning.textContent = value
     favorite.innerHTML = `
-        <button class="favorite-word">Register the word</button>
+        <button class="favorite-word" onClick='addFavoriteWord(${expression})' >Register the word</button>
+
     `
+   
+
+    // let favoriteWordButton = document.querySelector(".favorite-word")
+    // favoriteWordButton.addEventListener("click", () => {
+    //     addFavoriteWord(expression)
+
+    // })
 }
 
-    favorite.addEventListener("click", (expression)=> {
-        return (favoriteWords.push(expression), console.log(favoriteWords))
 
-    })
-
-let addFavoriteWord = (key, value) => {
-    return favoriteWords.push({
-        "expression":key,
-        "meaning":value
-    })
-
-}
-
+let addFavoriteWord = (word) => {
+    return(
+        favoriteWords.push(word),
+        localStorage.setItem("data", JSON.stringify(favoriteWords))
+    )
+ 
+    }
