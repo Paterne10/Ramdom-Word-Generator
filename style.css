@@ -96,3 +96,12 @@ a{
     border: none;
     background-color: #4f46e5;
 }
+
+
+@media (max-width:940px){
+    .random-word > h1{
+       font-size: 3rem ;
+       text-align: center;
+    }
+
+}
