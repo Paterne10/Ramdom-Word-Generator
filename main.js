@@ -39,9 +39,7 @@ let languageOptions = document.querySelector(".language-options")
 let wordGenerate = document.querySelector(".word-generate")
 let meaning = document.querySelector(".meaning")
 let favorite = document.querySelector(".favorite")
-let favoriteWords =  [        { "Candeur": "innocence" },
-        { "Compartimenter": "Répartir en part égale." },
-        { "Accalmie": "Période de calme." }]
+let favoriteWords = JSON.parse(localStorage.getItem("data")) || []
 
 console.log(favoriteWords)
 
@@ -106,11 +104,21 @@ let expressionGenerate = (id) =>{
     // })
 }
 
+let test = {"candeur":"ttt"}
+
+console.log(Object.keys(test)[0])
 
 let addFavoriteWord = (word) => {
-    return(
-        favoriteWords.push(word),
-        localStorage.setItem("data", JSON.stringify(favoriteWords))
-    )
+    // get the key of the object that we want to check if it's already exist in the array or not.
+    const newKey = Object.keys(word)[0]
+    // check if the object already exist by using the find method.
+    const exists = favoriteWords.find((x) => newKey in x)
+    if (exists === undefined){
+        favoriteWords.push(word)
+        console.log(exists)
+    }else{
+        console.log("You already added that word inside your favorite word list.")
+    }
+    localStorage.setItem("data", JSON.stringify(favoriteWords))
  
     }
