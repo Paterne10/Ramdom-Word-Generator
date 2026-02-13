@@ -5,7 +5,8 @@ let data = [
        words: [
         { "Candeur": "innocence" },
         { "Compartimenter": "Répartir en part égale." },
-        { "Accalmie": "Période de calme." }
+        { "Accalmie": "Période de calme." },
+        {"cocace":"Qui est à la fois étrange et drole."}
        ]
     },
     {
