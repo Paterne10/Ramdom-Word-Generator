@@ -6,7 +6,8 @@ let data = [
         { "Candeur": "innocence" },
         { "Compartimenter": "Répartir en part égale." },
         { "Accalmie": "Période de calme." },
-        {"cocace":"Qui est à la fois étrange et drole."}
+        {"cocace":"Qui est à la fois étrange et drole."},
+        {"Prosaique":"Qui est dépourvu de noblesse, de distinction, d'élégance."}
        ]
     },
     {
